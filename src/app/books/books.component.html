@@ -1,24 +1,24 @@
-<table class="striped centered responsive-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Year</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
+<div>
+  <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add Book</a>
+  <table class="striped centered responsive-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let book of books">
-          <td>{{book.id}} </td> 
-          <td>{{book.title}} </td> 
-          <td>{{book.author}} </td>
-          <td>{{book.year}} </td>
-          <td><i mz-icon
-            [align]="'center'"
-            [icon]="'delete_forever'"
-            [size]="'small'">
-          </i></td>
-        </tr>          
-  </tbody>
-</table>
+        <td>{{book.id}} </td>
+        <td>{{book.title}} </td>
+        <td>{{book.author}} </td>
+        <td>{{book.year}} </td>
+        <td><i class="material-icons">delete_forever</i></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

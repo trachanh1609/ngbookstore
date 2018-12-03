@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MzIconModule, MzIconMdiModule } from 'ngx-materialize'
+import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,8 +18,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MzIconModule,
-    MzIconMdiModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

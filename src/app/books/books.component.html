@@ -7,7 +7,7 @@
         <th>Title</th>
         <th>Author</th>
         <th>Year</th>
-        <th>Delete</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +16,10 @@
         <td>{{book.title}} </td>
         <td>{{book.author}} </td>
         <td>{{book.year}} </td>
-        <td><i class="material-icons">delete_forever</i></td>
+        <td>
+            <a class="waves-effect waves-light btn btn-small blue "><i class="material-icons left">create</i>Edit</a> or
+            <a class="waves-effect waves-light btn btn-small red"><i class="material-icons left">delete_forever</i>Delete</a>
+
       </tr>
     </tbody>
   </table>

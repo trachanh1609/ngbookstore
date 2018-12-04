@@ -5,14 +5,6 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 
-const defaultBook: Book = {
-  id: 0,
-  title: "",
-  author: "",
-  year: 2000,
-};
-
-
 @Component({
   selector: 'app-book-detail',
   templateUrl: './book-detail.component.html',
@@ -45,8 +37,6 @@ export class BookDetailComponent implements OnInit {
     const newBook = this.book ;
     this.bookService.addBook(newBook)
       .subscribe(book => {
-        // this.books.push(book);
-        console.log("Book added", book);
         this.goBack();
       });
   }

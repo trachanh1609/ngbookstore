@@ -4,7 +4,9 @@ import { Book } from './book';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 
 @Injectable({
@@ -23,5 +25,32 @@ export class BookService {
       )
   }
 
+  addBook (book: Book): Observable<Book> {
+    return this.http.post<Book>(this.booksUrl, Book, httpOptions).pipe(
+      catchError( (err,caught) => caught)
+    );
+  }
+
+  getBook(id: number): Observable<Book> {
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.get<Book>(url).pipe(
+      catchError( (err,caught) => caught)
+    );
+  }
+
+  updateBook (book: Book): Observable<any> {
+    return this.http.put(this.booksUrl, book, httpOptions).pipe(
+      catchError( (err,caught) => caught)
+    );
+  }
+
+  deleteBook (book: Book | number): Observable<Book> {
+    const id = typeof book === 'number' ? book : book.id;
+    const url = `${this.booksUrl}/${id}`;
+  
+    return this.http.delete<Book>(url, httpOptions).pipe(
+      catchError( (err,caught) => caught)
+    );
+  }
 
 }

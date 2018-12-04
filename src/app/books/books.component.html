@@ -1,5 +1,5 @@
 <div>
-  <a routerLink="/addbook" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add Book</a>
+  <a routerLink="/book" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add Book</a>
   <table class="striped centered responsive-table">
     <thead>
       <tr>
@@ -17,7 +17,7 @@
         <td>{{book.author}} </td>
         <td>{{book.year}} </td>
         <td>
-            <a class="waves-effect waves-light btn btn-small blue "><i class="material-icons left">create</i>Edit</a> or
+            <a routerLink="/book/{{book.id}}" class="waves-effect waves-light btn btn-small blue "><i class="material-icons left">create</i>Edit</a> or
             <a (click)="delete(book)" class="waves-effect waves-light btn btn-small red"><i class="material-icons left">delete_forever</i>Delete</a>
 
       </tr>

@@ -39,7 +39,9 @@ export class BookService {
   }
 
   updateBook (book: Book): Observable<any> {
-    return this.http.put(this.booksUrl, book, httpOptions).pipe(
+    const url = `${this.booksUrl}/${book.id}`;
+
+    return this.http.put(url, book, httpOptions).pipe(
       catchError( (err,caught) => caught)
     );
   }

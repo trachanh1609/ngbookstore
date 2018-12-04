@@ -2,6 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
+
+const defaultBook: Book = {
+  id: 0,
+  title: "",
+  author: "",
+  year: 2000,
+};
 
 
 @Component({
@@ -18,13 +27,18 @@ export class BookDetailComponent implements OnInit {
     year: 2000,
   };
 
+  isEditView: boolean = false;
+
   constructor(
     private bookService: BookService,
     private location: Location,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.setLatestBookId();
+    this.setView();
+    this.setCurrentBookbyView();
+    
   }
 
   addBook(): void {
@@ -37,6 +51,28 @@ export class BookDetailComponent implements OnInit {
       });
   }
 
+  setView() {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.isEditView = id ? true : false ;
+    
+  }
+
+  setCurrentBookbyView() {
+    if(this.isEditView) {
+      this.setBookById();
+    } else {
+      this.setLatestBookId();
+    }
+  }
+
+  setBookById(): void {
+    const id =  +this.route.snapshot.paramMap.get('id') ;
+    this.bookService.getBook(id)
+      .subscribe(book => this.book = book);
+
+  }
+
   setLatestBookId(): void {
 
     this.bookService.getBooks()
@@ -44,6 +80,11 @@ export class BookDetailComponent implements OnInit {
           this.book.id = books.length + 1 ;
         })
 
+  }
+
+  saveBook(): void {
+    this.bookService.updateBook(this.book)
+      .subscribe(() => this.goBack());
   }
 
   goBack(): void {

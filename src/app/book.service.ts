@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class BookService {
 
-  private booksUrl = 'http://localhost:4000/api/books';
+  private booksUrl = 'http://localhost:4000/api/books/';
 
   constructor(private http: HttpClient,) { }
 
@@ -26,7 +26,7 @@ export class BookService {
   }
 
   addBook (book: Book): Observable<Book> {
-    return this.http.post<Book>(this.booksUrl, Book, httpOptions).pipe(
+    return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
       catchError( (err,caught) => caught)
     );
   }

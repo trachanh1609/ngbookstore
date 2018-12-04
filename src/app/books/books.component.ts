@@ -11,14 +11,6 @@ import { BookService } from '../book.service';
 })
 
 export class BooksComponent implements OnInit {
-  // book: Book = {
-  //   id: 1,
-  //   title: 'Think Big',
-  //   author: 'David',
-  //   year: 2005,
-  // }
-
-  // books = BOOKS;
 
   books: Book[] = [];
 
@@ -32,9 +24,13 @@ export class BooksComponent implements OnInit {
   getBooks(): void {
     this.bookService.getBooks()
           .subscribe(books=> {
-            console.log("books", books);
             this.books = books
           });
+  }
+
+  delete(book: Book): void {
+    this.books = this.books.filter(value => value !== book);
+    this.bookService.deleteBook(book).subscribe();
   }
 
 }

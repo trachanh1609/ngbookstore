@@ -18,7 +18,7 @@
         <td>{{book.year}} </td>
         <td>
             <a class="waves-effect waves-light btn btn-small blue "><i class="material-icons left">create</i>Edit</a> or
-            <a class="waves-effect waves-light btn btn-small red"><i class="material-icons left">delete_forever</i>Delete</a>
+            <a (click)="delete(book)" class="waves-effect waves-light btn btn-small red"><i class="material-icons left">delete_forever</i>Delete</a>
 
       </tr>
     </tbody>

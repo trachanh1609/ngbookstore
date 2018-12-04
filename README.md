@@ -4,7 +4,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After clonning the repo, using terminal to navigate to root folder
+
+First, install all node modules
+
+* Run `npm install`
+
+Second, run frontend and backend
+
+* Run `npm run start` to run both frontend and backend concurrently.
+
+Or run frontend and backend separately in 2 terminal
+
+* Run `ng serve` for frontend dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+* Run `node server.js` for backend fake API server using json-server. Navigate to `http://localhost:4000/api/books` to see all books. Data are stored and served from ./db.json 
+
+
 
 ## Code scaffolding
 

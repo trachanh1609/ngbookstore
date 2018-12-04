@@ -77,7 +77,8 @@ export class BookDetailComponent implements OnInit {
 
     this.bookService.getBooks()
         .subscribe(books => {
-          this.book.id = books.length + 1 ;
+          const bookWithMaxId = books.reduce((maxIdBook, currentBook) => (maxIdBook.id > currentBook.id) ? maxIdBook : currentBook);
+          this.book.id = bookWithMaxId.id + 1 ;
         })
 
   }
